@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sale_Razvan_Lab2"
         mc:Ignorable="d"
-        Title="Virtual Doughnouts Factory" Height="495" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+        Title="Virtual Doughnouts Factory" Height="495" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Loaded="frmMain_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="22*"/>
@@ -36,7 +36,7 @@
         <GroupBox x:Name="gbSale" Header="Current Sale" HorizontalAlignment="Left" Height="166" Margin="14,288,0,0" VerticalAlignment="Top" Width="642" FontWeight="Bold" Grid.ColumnSpan="3" Grid.Column="1">
             <Canvas Height="155" VerticalAlignment="Top">
                 <Label x:Name="iblQuantity" Content="Quantity" HorizontalAlignment="Left" Height="28" Margin="30,10,0,0" VerticalAlignment="Top" Width="66" Grid.Column="1"/>
-                <TextBox x:Name="txtQuantity" HorizontalAlignment="Left" Margin="110,10,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" FontSize="18" Height="24" Grid.Column="1"/>
+                <TextBox x:Name="txtQuantity" HorizontalAlignment="Left" Margin="110,10,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" FontSize="18" Height="24" Grid.Column="1" KeyUp="txtQuantity_KeyPress"/>
                 <Label x:Name="iblType" Content="Type" HorizontalAlignment="Left" Margin="225,10,0,0" Height="28" VerticalAlignment="Top" Width="66" Grid.Column="1"/>
                 <ComboBox x:Name="cmbType" HorizontalAlignment="Left" Margin="280,13,0,0" VerticalAlignment="Top" Width="125" Height="24" Grid.Column="1"/>
                 <Label x:Name="iblPrice" Content="Price" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Margin="440,13,0,0" Grid.Column="1"/>
@@ -50,19 +50,19 @@
             </Canvas>
         </GroupBox>
 
-        <Menu Margin="0,0,341,440" Grid.ColumnSpan="2">
+        <Menu x:Name ="mnuMain" Margin="0,0,341,440" Grid.ColumnSpan="2">
             <MenuItem Header="File">
-                <MenuItem Header="Exit"/>
+                <MenuItem Header="Exit" Click="exitToolStripMenuItem_Click" />
             </MenuItem>
             <MenuItem Header="Doughnuts">
                 <MenuItem Header="Make">
                     <MenuItem Header="Raised">
-                        <MenuItem Header="Glazed"/>
-                        <MenuItem Header="Sugar"/>
+                        <MenuItem x:Name ="glazedToolStripMenuItem" Header="Glazed" IsCheckable="True" Click="glazedToolStripMenuItem_Click"/>
+                        <MenuItem x:Name ="sugarToolStripMenuItem" Header="Sugar" IsCheckable="True" Click="sugarToolStripMenuItem_Click" />
                     </MenuItem>
                     <MenuItem Header="Filled"/>
                 </MenuItem>
-                <MenuItem Header="Stop"/>
+                <MenuItem x:Name="mnuStop" Header="Stop" Click="stopToolStripMenuItem_Click"/>
             </MenuItem>
         </Menu>
     </Grid>
