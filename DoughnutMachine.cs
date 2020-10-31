@@ -10,7 +10,21 @@ namespace Sale_Razvan_Lab2
     class DoughnutMachine : Component
     {
         private DoughnutType mFlavor;
-
+        public delegate void DoughnutCompleteDelegate();
+        public event DoughnutCompleteDelegate DoughnutComplete;
+        DispatcherTimer doughnutTimer;
+        private System.Collections.ArrayList mDoughnuts = new System.Collections.ArrayList();
+        public Doughnut this[int Index]
+        {
+            get
+            {
+                return (Doughnut)mDoughnuts[Index];
+            }
+            set
+            {
+                mDoughnuts[Index] = value;
+            }
+        }
         public DoughnutType Flavor
         {
             get
@@ -22,21 +36,8 @@ namespace Sale_Razvan_Lab2
                 mFlavor = value;
             }
         }
-        private System.Collections.ArrayList mDoughnuts = new System.Collections.ArrayList();
-        public Doughnut this [int Index]
-        {
-            get
-            {
-                return (Doughnut)mDoughnuts[Index];
-            }
-            set
-            {
-                mDoughnuts[Index] = value;
-            }
-        }
-        public delegate void DoughnutCompleteDelegate();
-        public event DoughnutCompleteDelegate DoughnutComplete;
-        DispatcherTimer doughnutTimer;
+        
+        
         private void InitializeComponent()
         {
             this.doughnutTimer = new DispatcherTimer();
